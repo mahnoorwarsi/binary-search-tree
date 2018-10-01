@@ -9,6 +9,32 @@ struct btnode
 };
 
 
+btnode * inorder(btnode *ptr)
+{
+  
+  inorder(ptr->left);
+  return ptr;
+  cout<<"order traversal done"<<endl;
+  inorder(ptr->right);
+}
+
+
+btnode * preorder(btnode *ptr)
+{
+ return ptr;
+ cout<<"preorder traversal done"<<endl;
+  preorder(ptr->left);
+  preorder(ptr->right);
+}
+
+btnode * postorder(btnode *ptr)
+{
+   postorder(ptr->left);
+    postorder(ptr->right);
+   return ptr;
+   cout<<"postorder traversal done"<<endl;
+}
+
 btnode * getnode(btnode **root,int val)
  {
    btnode *current=*root;
@@ -75,8 +101,14 @@ int main()
 {
   btnode **root=NULL;
   btnode *current=NULL;
+  btnode *ptr=NULL;
   insert(&root,6);
+  insert(&root,3);
+  insert(&root,9);
   getnode(&current,6);
   getnode(&current,2);
   print(root);
+  postorder(ptr);
+  preorder(ptr);
+  inorder(ptr);
 }
